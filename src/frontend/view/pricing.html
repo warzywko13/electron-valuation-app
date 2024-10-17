@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+        <link rel="stylesheet" href="../css/index.css">
+
+        <title>Pricing</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="main.html">
+                <i class="fa-solid fa-arrow-left"></i> Powrót
+                </a>
+            </div>
+        </nav>
+
+        <div id="price" data-price_id="">
+            <section id="alerts" class="container">
+                <!-- Success Alert -->
+                <div id="success_alert" class="d-none alert alert-success alert-dismissible fade show" role="alert"></div>
+                <!-- Error Alert -->
+                <div id="error_alert" class="d-none alert alert-danger alert-dismissible fade show" role="alert"></div>
+            </section>
+
+            <section id="pricing" class="px-md-5">
+                <hr>
+                <h2 class="h3 text-center pb-1">Wycena</h2>
+                <hr/>
+
+                <div class="form container">
+                    <div class="mb-3" id="signature_container">
+                        <label for="signature" class="form-label d-none">Sygnatura</label>
+                        <input type="text" class="form-control disabled d-none" id="signature" disabled>
+                        <p id="error_signature" class="invalid-feedback"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Tytuł</label>
+                        <input type="text" class="form-control" id="title">
+                        <p id="error_title" class="invalid-feedback"></p>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table" id="pricing_table">
+                        <thead>
+                        <tr>
+                            <th class="pricing_table__name">Nazwa</th>
+                            <th class="pricing_table__count">Ilość</th>
+                            <th class="pricing_table__unit">J.m.</th>
+                            <th class="pricing_table__netto">Cena netto</th>
+                            <th class="pricing_table__sum_name">Wartość netto</th>
+                            <th class="pricing_table__vat">Stawka VAT</th>
+                            <th class="pricing_table__sum_name">Kwota VAT</th>
+                            <th class="pricing_table__brutto">Wartość brutto</th>
+                            <th class=""></th>
+                        </tr>
+                        </thead>
+                        <tbody id="pricing_container">
+                            <tr>
+                                <td colspan="9">Brak wyników</td>
+                            </tr>
+                        </tbody>
+                        <tfoot id="pricing_footer">
+                            <tr>
+                                <td colspan="4">Suma</td>
+                                <td id="pricing_footer_netto_sum" class="fw-bold">0</td>
+                                <td class="fw-bold"></td>
+                                <td id="pricing_footer_vat_sum" class="fw-bold">0</td>
+                                <td id="pricing_footer_brutto_sum" class="fw-bold">0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div id="error_pricing_table" class="alert alert-danger d-none" role="alert"></div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                    <button id="price_add" class="btn btn-primary">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </section>
+
+            <div class="d-grid gap-2 col-4 col-md-2 mx-auto mt-5 mb-2">
+                <button id="save_pricing" class="btn btn-primary" type="button">Zapisz</button>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="module" src="../js/pricing.js"></script>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+    <link rel="stylesheet" href="../css/index.css">
+
+    <title>Settings</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="main.html">
+                <i class="fa-solid fa-arrow-left"></i> Powrót
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="alerts">
+            <!-- Success Alert -->
+            <div id="success_alert" class="d-none alert alert-success alert-dismissible fade show" role="alert"></div>
+            <!-- Error Alert -->
+            <div id="error_alert" class="d-none alert alert-danger alert-dismissible fade show" role="alert"></div>
+        </section>
+
+        <hr />
+        <h2 class="h3 text-center pb-1">Ustawienia</h2>
+        <hr />
+
+        <section id="owner">
+            <div class="form">
+                <input type="hidden" id="id">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nazwa firmy</label>
+                    <input type="text" class="form-control" id="name">
+                    <p id="error_name" class="invalid-feedback"></p>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="firstname" class="form-label">Imię</label>
+                            <input type="text" class="form-control" id="firstname">
+                            <p id="error_firstname" class="text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">Nazwisko</label>
+                            <input type="text" class="form-control" id="lastname">
+                            <p id="error_lastname" class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Telefon</label>
+                    <input type="text" class="form-control" id="phone">
+                    <p id="error_phone" class="invalid-feedback"></p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nip" class="form-label">NIP</label>
+                    <input type="text" class="form-control" id="nip">
+                    <p id="error_nip" class="text-danger"></p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="regon" class="form-label">REGON</label>
+                    <input type="text" class="form-control" id="regon">
+                    <p id="error_regon" class="text-danger"></p>
+                </div>
+      
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Miasto</label>
+                            <input type="text" class="form-control" id="city">
+                            <p id="error_city" class="text-danger"></p>
+                        </div>
+                    </div>
+      
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label for="post_code" class="form-label">Kod pocztowy</label>
+                            <input type="text" class="form-control" id="post_code">
+                            <p id="error_post_code" class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+      
+                <div class="mb-3">
+                    <label for="street" class="form-label">Ulica</label>
+                    <input type="text" class="form-control" id="street">
+                    <p id="error_street" class="text-danger"></p>
+                </div>
+      
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="street_number" class="form-label">Nr domu</label>
+                            <input type="number" class="form-control" id="street_number">
+                            <p id="error_street_number" class="text-danger"></p>
+                        </div>
+                    </div>
+      
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="apartment_number" class="form-label">Nr lokalu</label>
+                            <input type="number" class="form-control" id="apartment_number">
+                            <p id="error_apartment_number" class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 col-4 col-md-2 mx-auto mt-3 mb-3">
+                    <button class="btn btn-primary" id="save_owner" type="button">Zapisz</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="../js/settings.js"></script>
+</body>
+</html>

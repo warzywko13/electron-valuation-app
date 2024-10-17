@@ -1,0 +1,53 @@
+{
+  "name": "wyceny",
+  "productName": "Wyceny usług",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "dev": "nodemon --exec electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Adam Wawrzyniak",
+  "license": "MIT",
+  "description": "Wycena usług",
+  "build": {
+    "files": [
+      "dist/**/*",
+      "database.sqlite"
+    ],
+    "asarUnpack": [
+      "database.sqlite"
+    ]
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-deb": "^7.5.0",
+    "@electron-forge/maker-rpm": "^7.5.0",
+    "@electron-forge/maker-squirrel": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
+    "@electron-forge/plugin-fuses": "^7.5.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^32.1.2",
+    "electron-rebuild": "^3.2.9",
+    "electron-reload": "^2.0.0-alpha.1",
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "bootstrap": "^5.3.3",
+    "electron-squirrel-startup": "^1.0.1",
+    "jquery": "^3.7.1",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.3",
+    "knex": "^3.1.0",
+    "slim-select": "^2.9.2",
+    "sqlite3": "^5.1.7",
+    "wyceny": "file:"
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+    <link rel="stylesheet" href="../css/index.css">
+
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <!-- @TODO -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+            <div class="my-2 nav-item">
+                <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i> Ustawienia
+                </a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="alerts">
+            <!-- Success Alert -->
+            <div id="success_alert" class="d-none alert alert-success alert-dismissible fade show" role="alert"></div>
+            <!-- Error Alert -->
+            <div id="error_alert" class="d-none alert alert-danger alert-dismissible fade show" role="alert"></div>
+        </section>
+
+        <hr />
+        <h2 class="h3 text-center pb-1">Wyceny</h2>
+        <hr/>
+
+        <!-- Filters -->
+        <section id="filters">
+            <div class="mb-3">
+                <label for="signature" class="form-label">Sygnatura:</label>
+                <select id="signature">
+                    <option data-placeholder="true"></option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                        <label for="create_from" class="form-label">Data wystawienia od:</label>
+                        <input type="date" class="form-control" id="create_from">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                        <label for="create_to" class="form-label">Data wystawienia do:</label>
+                        <input type="date" class="form-control" id="create_to">
+                    </div>
+                </div>
+            </div>
+
+            <button id="filter_btn" class="btn btn-primary">Filtruj</button>
+            <button id="filter_reset_btn" class="btn btn-secondary">Resetuj</button>
+        </section>
+
+        <div class="d-flex flex-row-reverse mt-5">
+            <a href="pricing.html" class="btn btn-primary">Wystaw wycenę</a>
+        </div>
+        
+        <div class="table-responsive mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-1">Sygnatura</th>
+                        <th class="col-4">Data wystawienia</th>
+                        <th class="col-5">Tytuł</th>
+                        <th class="col-2"></th>
+                    </tr>
+                </thead>
+                <tbody id="main_container"></tbody>
+                <tfoot id="main_pagination"></tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../../../node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="../../../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+
+    <script type="text/javascript" src="../../../node_modules/slim-select/dist/slimselect.min.js"></script>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>
