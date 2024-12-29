@@ -26,6 +26,7 @@ function createWindow() {
         enableRemoteModule: false
       }
     });
+    mainWindow.maximize();
   
     // Tylko podczas robienia dev
     // mainWindow.webContents.openDevTools();

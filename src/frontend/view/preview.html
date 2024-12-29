@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+
+        <link rel="stylesheet" href="../css/index.css">
+
+        <title>Preview</title>
+    </head>
+    <body>
+        <!-- Nawigacja -->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <a id="return_url" class="navbar-brand" href="main.html">
+                    <i class="fa-solid fa-arrow-left"></i> Powrót
+                </a>
+            </div>
+        </nav>
+
+        <div class="conatiner">
+            <section id="alerts" class="container">
+                <!-- Success Alert -->
+                <div id="success_alert" class="d-none alert alert-success alert-dismissible fade show" role="alert"></div>
+                <!-- Error Alert -->
+                <div id="error_alert" class="d-none alert alert-danger alert-dismissible fade show" role="alert"></div>
+            </section>
+
+            <!-- Podgląd PDF -->
+            <iframe id="preview_pdf" frameborder="0">
+
+            </iframe>
+        </div>
+
+        <!-- JS -->
+        <script type="text/javascript" src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="../../../node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+        <script type="text/javascript" src="../../../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+
+        <script type="module" src="../js/preview.js"></script>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-import { font, font_bold } from "./fonts/fonts.js";
+import { font, font_bold } from "../fonts/fonts.js";
 
 function formatStreet(street, street_number, apartment_number) {
     if(apartment_number) {
@@ -16,9 +16,9 @@ function formatMoney(price) {
     return price > 0 ? price.toFixed(2) : '-';
 }
 
-function pricing_pdf(data) {
+function generate_pdf(data) {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF('a4');
 
     const {
         signature,
@@ -165,7 +165,7 @@ function pricing_pdf(data) {
     // doc.text("................................", 190, tableHeight + 25, { align: "right" });
 
     // Save the PDF
-    doc.save(`wycena_${signature}.pdf`);
+    return doc.output('datauristring');
 }
 
-export default pricing_pdf;
+export default generate_pdf;

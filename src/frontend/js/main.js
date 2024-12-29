@@ -1,6 +1,5 @@
 import getParams from "./tools/getParams.js";
 import { successAlert, errorAlert, clearAlert } from "./tools/alerts.js";
-import pricing_pdf from "./pricing_pdf.js";
 
 window.electronAPI.on("renderMainListResult", async function(result) {
     const {data, pagination} = result;
@@ -47,23 +46,11 @@ window.electronAPI.on('deletePricingResult', function(result) {
     window.electronAPI.send("getMainList", page);
 });
 
-// Generowanie PDF
+// Podgląd PDF
 $('#main_container').on('click', 'a.download-price', function() {
     const id = $(this).data('id');
 
-    window.electronAPI.send('getDataForPDF', id);
-});
-
-window.electronAPI.on('getDataForPDFResult', function(result) {
-    const {status, message, data} = result;
-    
-    clearAlert();
-    if(status !== 'ok') {
-        errorAlert(message);
-        return false;
-    }
-
-    pricing_pdf(data);
+    window.location.replace(`preview.html?id=${id}`);
 });
 
 // Filtry
@@ -123,7 +110,8 @@ window.electronAPI.on("getSignatureFilterDataResult", function(result) {
 
 // Na wejściu
 document.addEventListener("DOMContentLoaded", function() {
-    window.electronAPI.send("getMainList", 1);
+    const page = getParams('page') ?? 1;
+    window.electronAPI.send("getMainList", page);
 
     const status = getParams('status');
     const message = getParams('message');
