@@ -1,8 +1,8 @@
 const { timestampToDate } = require('../../tools/index');
 
 const renderMainRow = (el, index) => {
-    const {id, signature, title, created_at} = el;
-    const formatData = timestampToDate(created_at);
+    const {id, signature, title, issue_date} = el;
+    const formatData = timestampToDate(issue_date);
 
     index++;
 

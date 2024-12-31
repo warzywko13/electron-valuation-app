@@ -1,6 +1,6 @@
 import getParams from "./tools/getParams.js";
 import { errorAlert, clearAlert } from "./tools/alerts.js";
-import generate_pdf from "./tools/generate_pdf.js";
+import generatePDF from "./tools/generatePDF.js";
 
 // Na wejściu
 document.addEventListener("DOMContentLoaded", function() {
@@ -21,6 +21,6 @@ window.electronAPI.on('getDataForPDFResult', function(result) {
         return false;
     }
 
-    document.getElementById('preview_pdf').src = generate_pdf(data);
+    document.getElementById('preview_pdf').src = generatePDF(data);
 });
 

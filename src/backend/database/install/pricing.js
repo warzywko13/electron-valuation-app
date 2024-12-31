@@ -5,6 +5,7 @@ function pricing() {
         return knex.schema.createTable('pricing', function (t) {
             t.increments('id').primary();
             t.string('signature');
+            t.bigInteger('issue_date');
 
             t.string('title');
             

@@ -1,6 +1,7 @@
 const { ipcMain } = require("electron");
 const knex = require('../database/knexConfig');
 const { event } = require("jquery");
+const dateToTimestamp = require('../tools/dateToTimestamp');
 
 // Helpers
 const { now } = require('../tools/index');
@@ -110,6 +111,7 @@ function pricingHandler(mainWindow) {
         .first();
 
         setting_price.title = price.title;
+        setting_price.issue_date = price.issue_date ? dateToTimestamp(price.issue_date) : null;
 
         //Jesli nie ma error
         if(!setting_price) {

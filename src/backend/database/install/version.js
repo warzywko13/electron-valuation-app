@@ -1,5 +1,6 @@
 const knex = require('../knexConfig');
 const { now } = require('../../tools/index');
+const getVersion = require('../../tools/getVersion');
 
 function version() {
     const createVersionTable = () => {
@@ -10,7 +11,7 @@ function version() {
             t.bigInteger('updated_at');
         }).then(function() {
             return knex.insert([
-                {name: '1.0.0', created_at: now()}
+                {name: getVersion(), created_at: now()}
             ]).into('version');
         });
     }

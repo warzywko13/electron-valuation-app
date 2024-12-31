@@ -1,5 +1,7 @@
 import getParams from "./tools/getParams.js";
 import { errorAlert, clearAlert } from "./tools/alerts.js";
+import now from "./tools/now.js";
+import timestampToDate from "./tools/timestampToDate.js";
 
 const save_pricing = $('#save_pricing');
 
@@ -15,7 +17,7 @@ price_add.on('click', async function() {
 });
 window.electronAPI.on("renderPricingResult", async function(pricing_row) {
     const pricing_count = $('.pricing_row').length;
-  
+
     pricing_count
         ? pricing_container.append(pricing_row)
         : pricing_container.html(pricing_row);
@@ -38,6 +40,7 @@ const getFormData = () => {
     const price = {
         id: $('#price').data('price_id'),
         title: $('#title').val(),
+        issue_date: $('#issue_date').val(),
         rents: []
     };
 
@@ -249,6 +252,8 @@ window.electronAPI.on('savePricingResult', function(result) {
 document.addEventListener("DOMContentLoaded", function() {
     const id = getParams('id')
     if(!id) {
+        // Ustaw datę wydania na dzisiejszą
+        $('#issue_date').val(timestampToDate(now()));
         return;
     }
 
@@ -256,9 +261,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.electronAPI.send("getPricingList", id);
 });
 
-window.electronAPI.on('getPricingResult', function(result) {
-    const {status, message, data} = result;
-
+window.electronAPI.on('getPricingResult', function({status, message, data}) {
     if(status === 'error' || data.length === 0) {
         window.location.replace(`main.html?status=error&message=${message}`);
         return false;
@@ -267,7 +270,8 @@ window.electronAPI.on('getPricingResult', function(result) {
     const {
         id,
         signature,
-        title
+        title,
+        issue_date
     } = data;
 
     $('#signature_container label').removeClass('d-none');
@@ -276,6 +280,7 @@ window.electronAPI.on('getPricingResult', function(result) {
     $('#price').data('price_id', id);
     $('#title').val(title);
     $('#signature').val(signature);
+    $('#issue_date').val(issue_date ? timestampToDate(issue_date): "");
 });
 
 window.electronAPI.on("getPricingListResult", function(result) {

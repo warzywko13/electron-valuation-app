@@ -22,27 +22,27 @@ function mainHandler(mainWindow) {
 
         if (params) {
             const { signature, create_from, create_to } = params;
-          
+            
             if (signature) {
                 query_where += "AND id = ? ";
                 query_params.push(signature);
             }
-          
+            
             if (create_from) {
-                query_where += "AND strftime('%d-%m-%Y', datetime(created_at, 'unixepoch')) >= ? ";
+                query_where += "AND issue_date >= ? ";
                 query_params.push(dateToTimestamp(create_from));
             }
-          
+        
             if (create_to) {
-                query_where += "AND strftime('%d-%m-%Y', datetime(created_at, 'unixepoch')) <= ? ";
+                query_where += "AND issue_date <= ? ";
                 query_params.push(dateToTimestamp(create_to))
             }
         }
         
         const total = await knex('pricing')
-          .count('* as count')
-          .whereRaw(query_where, query_params)
-          .first();
+            .count('* as count')
+            .whereRaw(query_where, query_params)
+            .first();
         
         let render = '';
         if(Number(total.count)) {

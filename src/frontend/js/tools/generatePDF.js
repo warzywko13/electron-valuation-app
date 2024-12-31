@@ -1,4 +1,5 @@
 import { font, font_bold } from "../fonts/fonts.js";
+import timestampToDate from "./timestampToDate.js";
 
 function formatStreet(street, street_number, apartment_number) {
     if(apartment_number) {
@@ -16,13 +17,14 @@ function formatMoney(price) {
     return price > 0 ? price.toFixed(2) : '-';
 }
 
-function generate_pdf(data) {
+function generatePDF(data) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('a4');
 
     const {
         signature,
-        
+        issue_date,
+
         setting_name,
         setting_firstname,
         setting_lastname,
@@ -47,12 +49,15 @@ function generate_pdf(data) {
 
     doc.setFont("arial");
 
+    // Prawa
+    doc.text("Data wydania " + timestampToDate(issue_date, '.', 'DDMMYYYY'), 190, 16, { align : "right" });
+
     // Lewa
-    doc.text(setting_name, 14, 16);
-    doc.text(formatUserName(setting_firstname, setting_lastname), 14, 23)
-    doc.text(formatStreet(setting_street, setting_street_number, setting_apartment_number), 14, 30);
-    doc.text(`tel. ${setting_phone}`, 14, 37);
-    doc.text(`${setting_post_code} ${setting_city}`, 14, 44);
+    doc.text(setting_name, 14, 23);
+    doc.text(formatUserName(setting_firstname, setting_lastname), 14, 30)
+    doc.text(formatStreet(setting_street, setting_street_number, setting_apartment_number), 14, 37);
+    doc.text(`tel. ${setting_phone}`, 14, 44);
+    doc.text(`${setting_post_code} ${setting_city}`, 14, 51);
 
     // // Prawa
     // doc.text(contrahent_name, 190, 44, { align : "right" });
@@ -168,4 +173,4 @@ function generate_pdf(data) {
     return doc.output('datauristring');
 }
 
-export default generate_pdf;
+export default generatePDF;

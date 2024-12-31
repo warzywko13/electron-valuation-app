@@ -3,6 +3,7 @@ const path = require('path');
 
 const pricingHandler = require("./backend/ipcHandlers/pricingHandler");
 const installTable = require("./backend/database/installTable");
+const updateTable = require("./backend/database/updateTable");
 const settingsHandler = require("./backend/ipcHandlers/settingsHandler");
 const mainHandler = require("./backend/ipcHandlers/mainHandler");
 const pricingPDFHandler = require("./backend/ipcHandlers/pricingPDFHandler");
@@ -35,6 +36,8 @@ function createWindow() {
 
     // Instaluj tabele
     installTable();
+    // Aktualizuj tabele
+    updateTable();
   
     mainWindow.loadFile('src/frontend/view/main.html');
   
